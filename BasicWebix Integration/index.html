@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" ng-app="webixApp">
+    <head>
+        <meta charset="utf-8">
+        <title>Webix - Angular  : Layouts</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.webix.com/edge/webix.css">
+        <script type="text/javascript" src="https://cdn.webix.com/edge/webix.js"></script>
+        <script type="text/javascript" src="index.js"></script>
+
+        <script type="text/javascript">
+            var app = angular.module('webixApp', [ "webix" ]);
+
+            app.controller('addCtrl', function($scope){
+
+                $scope.firstNum = 885;
+                $scope.secondNum = 995;
+
+            })
+             app.controller('subCtrl', function($scope){
+
+                $scope.firstNum = 775;
+                $scope.secondNum = 225;
+
+            })
+
+
+        </script>
+    </head>
+    <body>
+
+        <div webix-ui type="space">
+            <div height="35">Welcome to Angular Webix App </div>
+            <div view="cols" type="wide" margin="10">
+                <div width="200">
+                    <input type="text" placeholder="Type something here" ng-model="app">
+                    Hello {{app}}!
+                </div>
+                <div view="resizer"></div>
+                <div view="tabview" ng-controller="addCtrl">
+                    <div header="Addition">
+                        <label>First Number</label>
+                        <input type="number" placeholder="Enter First Number here" ng-model="firstNum">
+                        <label>Second Number</label>
+                        <input type="number" placeholder="Enter Second Number here" ng-model="secondNum">
+                        <div>
+                            The Addition is : {{firstNum+secondNum}}
+                        </div>
+
+                    </div>
+                    <div header="Subtraction" ng-controller="subCtrl">
+                        <label>First Number</label>
+                        <input type="number" placeholder="Enter First Number here" ng-model="firstNum">
+                        <label>Second Number</label>
+                        <input type="number" placeholder="Enter Second Number here" ng-model="secondNum">
+                        <div>
+                            The Addition is : {{firstNum-secondNum}}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div height="200">
+                
+                Footer</div>
+        </div>
+
+    </body>
+</html>
