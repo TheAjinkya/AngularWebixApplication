@@ -39,30 +39,24 @@
                 </div>
                 <div view="resizer"></div>
                 <div view="tabview" ng-controller="addCtrl">
-                    <div header="Addition">
-                        <label>First Number</label>
-                        <input type="number" placeholder="Enter First Number here" ng-model="firstNum">
-                        <label>Second Number</label>
-                        <input type="number" placeholder="Enter Second Number here" ng-model="secondNum">
-                        <div>
-                            The Addition is : {{firstNum+secondNum}}
-                        </div>
+                    <div header="JSON Data Fetch Example">
 
-                    </div>
-                 
-                </div>
-            </div>
-
-            <div>
-                <div ng-controller="subCtrl">
-                            <div webix-ui view="datatable" webix-data="content" autoheight="true" autoheight="true" select="row">
-                                <div view="column" id="firstName" sort="int" css="rating">First Name</div>
+                        <div ng-controller="subCtrl">
+                            <div webix-ui view="datatable" webix-data="content" autoheight="true"  select="row" fillspace="true">
+                                <div autowidth="true" view="column" id="firstName" sort="int" css="rating">First Name</div>
                                 <div view="column" id="lastName"   sort="int">Last Name</div>
                                 <div view="column" id="contact"  sort="int">Contact</div>
-                                <div view="column" id="email"  sort="string" fillspace="true">E mail</div>  
+                                <div view="column" id="email"  sort="string" width= "200">E mail</div>  
                             </div>
                         </div>
+                    </div>
+                    
+
+                </div>
+                <div view="resizer"></div>
             </div>
+
+
         </div>
 
     </body>
