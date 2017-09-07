@@ -19,7 +19,7 @@
 
             })
             app.controller('subCtrl', function($scope, $http){
-                
+
                 $http.get('data.json').then(function(response){
                     $scope.content = response.data.student
                 })
@@ -49,24 +49,19 @@
                         </div>
 
                     </div>
-                    <div header="Subtraction" >
-
-
-
-                    </div>
+                 
                 </div>
-            </div>
-            <div webix-ui ng-controller="">
-                
-                <div ng-repeat="ptr in content">
-                {{ptr.firstName}}
-                </div>
-               
             </div>
 
             <div>
-               
-
+                <div ng-controller="subCtrl">
+                            <div webix-ui view="datatable" webix-data="content" autoheight="true" autoheight="true" select="row">
+                                <div view="column" id="firstName" sort="int" css="rating">First Name</div>
+                                <div view="column" id="lastName"   sort="int">Last Name</div>
+                                <div view="column" id="contact"  sort="int">Contact</div>
+                                <div view="column" id="email"  sort="string" fillspace="true">E mail</div>  
+                            </div>
+                        </div>
             </div>
         </div>
 
