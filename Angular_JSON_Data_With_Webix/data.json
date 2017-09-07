@@ -1,0 +1,31 @@
+{
+    "student" = [
+
+                    {
+                        "firstName" : "Ajinkya",
+                        "lastName"  : "Chanshetty",
+                        "contact"   : 9960282703,
+                        "email"     : "aajinkya@hotmail.com"
+                    },
+                    {
+                        "firstName" : "Sandip",
+                        "lastName"  : "Pal",
+                        "contact"   : 9960282703,
+                        "email"     : "sandip@hotmail.com"
+                    },
+
+                    {
+                        "firstName" : "Neha",
+                        "lastName"  : "Sathawane",
+                        "contact"   : 99608882703,
+                        "email"     : "neha@hotmail.com"
+                    },
+
+                    {
+                        "firstName" : "Gopal",
+                        "lastName"  : "Thakur",
+                        "contact"   : 9960000703,
+                        "email"     : "gopal@hotmail.com"
+                    }
+                ]
+}

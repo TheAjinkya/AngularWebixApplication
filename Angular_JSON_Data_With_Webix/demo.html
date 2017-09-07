@@ -18,37 +18,11 @@
                 $scope.secondNum = 995;
 
             })
-            app.controller('dataCtrl', function($scope){
-
-                $scope.student = [
-                    {
-                        "firstName" : "Ajinkya",
-                        "lastName"  : "Chanshetty",
-                        "contact"   : 9960282703,
-                        "email"     : "aajinkya@hotmail.com"
-                    },
-                    {
-                        "firstName" : "Sandip",
-                        "lastName"  : "Pal",
-                        "contact"   : 9960282703,
-                        "email"     : "sandip@hotmail.com"
-                    },
-
-                    {
-                        "firstName" : "Neha",
-                        "lastName"  : "Sathawane",
-                        "contact"   : 99608882703,
-                        "email"     : "neha@hotmail.com"
-                    },
-
-                    {
-                        "firstName" : "Gopal",
-                        "lastName"  : "Thakur",
-                        "contact"   : 9960000703,
-                        "email"     : "gopal@hotmail.com"
-                    }
-
-                ]
+            app.controller('subCtrl', function($scope, $http){
+                
+                $http.get('data.json').then(function(response){
+                    $scope.content = response.data.student
+                })
             })
 
 
@@ -58,7 +32,6 @@
 
         <div webix-ui type="space">
             <div height="35">Welcome to Angular Webix App </div>
-            <div view="resizer"></div>
             <div view="cols" type="wide" margin="10">
                 <div width="200">
                     <input type="text" placeholder="Type something here" ng-model="app">
@@ -76,30 +49,25 @@
                         </div>
 
                     </div>
-                    <div header="Subtraction">
+                    <div header="Subtraction" >
 
 
 
                     </div>
                 </div>
             </div>
-            <div view="resizer"></div>
-            <div>
-
-                <div ng-controller="dataCtrl">
-                    <div webix-ui view="datatable" webix-data="student" autoheight="true" autowidth="true" fillspace="true"  resizeColumn="true">
-
-                        <div resizeColumn="true" view="column" id="firstName" sort="string">First Name</div>
-                        <div view="column" id="lastName" sort="string">Last Name</div>
-                        <div view="column" id="contact"  sort="int">Contact</div>
-                        <div view="column" id="email"  sort="string" fillspace="true">Email</div>  
-                    </div>
-                </div>    
-
+            <div webix-ui ng-controller="">
+                
+                <div ng-repeat="ptr in content">
+                {{ptr.firstName}}
+                </div>
+               
             </div>
 
+            <div>
+               
 
-
+            </div>
         </div>
 
     </body>
