@@ -18,38 +18,30 @@
                 $scope.secondNum = 995;
 
             })
-            app.controller('dataCtrl', function($scope){
 
-                $scope.student = [
-                    {
-                        "firstName" : "Ajinkya",
-                        "lastName"  : "Chanshetty",
-                        "contact"   : 9960282703,
-                        "email"     : "aajinkya@hotmail.com"
-                    },
-                    {
-                        "firstName" : "Sandip",
-                        "lastName"  : "Pal",
-                        "contact"   : 9960282703,
-                        "email"     : "sandip@hotmail.com"
-                    },
+            app.controller('subCtrl', function($scope){
 
-                    {
-                        "firstName" : "Neha",
-                        "lastName"  : "Sathawane",
-                        "contact"   : 99608882703,
-                        "email"     : "neha@hotmail.com"
-                    },
+                $scope.firstNum = 885;
+                $scope.secondNum = 995;
 
-                    {
-                        "firstName" : "Gopal",
-                        "lastName"  : "Thakur",
-                        "contact"   : 9960000703,
-                        "email"     : "gopal@hotmail.com"
-                    }
-
-                ]
             })
+            
+            app.controller('multiCtrl', function($scope){
+
+                $scope.firstNum = 885;
+                $scope.secondNum = 995;
+
+            })
+            
+            app.controller('divCtrl', function($scope){
+
+                $scope.firstNum = 885;
+                $scope.secondNum = 995;
+
+            })
+
+
+
 
 
         </script>
@@ -76,8 +68,36 @@
                         </div>
 
                     </div>
-                    <div header="Subtraction">
+                    <div header="Subtraction" ng-controller="subCtrl">
+                        <label>First Number</label>
+                        <input type="number" placeholder="Enter First Number here" ng-model="firstNum">
+                        <label>Second Number</label>
+                        <input type="number" placeholder="Enter Second Number here" ng-model="secondNum">
+                        <div>
+                            The Addition is : {{firstNum-secondNum}}
+                        </div>
 
+
+                    </div>
+                    <div header="Multiplication" ng-controller="multiCtrl">
+                        <label>First Number</label>
+                        <input type="number" placeholder="Enter First Number here" ng-model="firstNum">
+                        <label>Second Number</label>
+                        <input type="number" placeholder="Enter Second Number here" ng-model="secondNum">
+                        <div>
+                            The Multiplication is : {{firstNum*secondNum}}
+                        </div>
+
+
+                    </div>
+                    <div header="Division" ng-controller="divCtrl">
+                        <label>First Number</label>
+                        <input type="number" placeholder="Enter First Number here" ng-model="firstNum">
+                        <label>Second Number</label>
+                        <input type="number" placeholder="Enter Second Number here" ng-model="secondNum">
+                        <div>
+                            The Division is : {{firstNum/secondNum}}
+                        </div>
 
 
                     </div>
@@ -86,15 +106,6 @@
             <div view="resizer"></div>
             <div>
 
-                <div ng-controller="dataCtrl">
-                    <div webix-ui view="datatable" webix-data="student" autoheight="true" autowidth="true" fillspace="true"  resizeColumn="true">
-
-                        <div resizeColumn="true" view="column" id="firstName" sort="string">First Name</div>
-                        <div view="column" id="lastName" sort="string">Last Name</div>
-                        <div view="column" id="contact"  sort="int">Contact</div>
-                        <div view="column" id="email"  sort="string" fillspace="true">Email</div>  
-                    </div>
-                </div>    
 
             </div>
 
