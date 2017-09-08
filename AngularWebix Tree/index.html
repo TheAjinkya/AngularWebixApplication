@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en" ng-app="webixApp">
+    <head>
+        <meta charset="utf-8">
+        <title>Webix - Angular  : Layouts</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdn.webix.com/edge/webix.css">
+    </head>
+    <body>
+
+        <div webix-ui type="space">
+            <div height="35">Welcome to Angular Webix App </div>
+            <div view="resizer"></div>
+            <div view="cols" type="wide" margin="10">
+               
+                <div width="200">
+                    <input type="text" placeholder="Type something here" ng-model="app">
+                    Hello {{app}}!
+                    <div webix-ui='tree_config' ng-controller="treeController"></div>
+                </div>
+                <div view="resizer"></div>
+                <div view="tabview">
+                    <div header="Tab1">
+                        <div ng-include="'navbar.html'"></div>
+                        <div ui-view></div>
+                    </div>
+                    <div header="Tab2">
+                        <div ng-include="'main.webix.html'"></div>
+                    </div>
+                    <div header="Tab3"></div>
+                </div>
+
+            </div>
+            <div view="resizer"></div>
+            <div header="footer"> footer</div>
+        </div>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script> 
+    <script src="module.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular-ui-router/1.0.0-rc.1/angular-ui-router.min.js"></script>
+    <script type="text/javascript" src="js/webix.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script src="controller.js"></script>
+    <script src="config.js"></script>
+</html>
