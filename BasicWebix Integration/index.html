@@ -7,7 +7,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.js"></script>
         <script src="https://angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
 
         <link rel="stylesheet" type="text/css" href="https://cdn.webix.com/edge/webix.css">
@@ -22,12 +22,27 @@
 
             app.config(function($stateProvider, $urlRouterProvider){
 
-                $urlRouterProvider.otherwise("/home");
+                $urlRouterProvider.otherwise("/add");
 
                 $stateProvider
-                    .state('/home', {
-                    url : '/home',
-                    templateUrl : 'home.html'
+                    .state('/add', {
+                    url : '/add',
+                    templateUrl : 'add.html'
+                })
+                
+                 .state('/sub', {
+                    url : '/sub',
+                    templateUrl : 'subtraction.html'
+                })
+                
+                 .state('/div', {
+                    url : '/div',
+                    templateUrl : 'division.html'
+                })
+                
+                 .state('/multi', {
+                    url : '/multi',
+                    templateUrl : 'multiplication.html'
                 })
 
 
@@ -64,19 +79,26 @@
             app.controller("TreeController", function($scope){
 
                 var TreeData =   { data: [
-                    {id:"root", value:"Cars", open:true, link : "home", data:[
+                    {id:"root", value:"Addition", open:true, link : "add", data:[
                         { id:"1", open:true, value:"Toyota",  link : "https://www.google.com", data:[
                             { id:"1.1", value:"Avalon" },
                             { id:"1.2", value:"Corolla" },
                             { id:"1.3", value:"Camry" }
                         ]},
-                        { id:"2", open:true, value:"Skoda",  link : "https://www.google.com",
+                        { id:"2", open:true, value:"Multiplication",  link : "multi",
                          data:[
                              { id:"2.1", value:"Octavia" },
                              { id:"2.2", value:"Superb" }
                          ]},
 
-                        { id:"3", open:true, value:"Audi",  link : "https://www.google.com",
+                        { id:"3", open:true, value:"Division",  link : "div",
+                         data:[
+                             { id:"3.1", value:"Audi A4" },
+                             { id:"3.2", value:"Audi A6" },
+                             { id:"3.3", value:"Audi A7" }
+                         ]},
+
+                        { id:"3", open:true, value:"Subtraction",  link : "sub",
                          data:[
                              { id:"3.1", value:"Audi A4" },
                              { id:"3.2", value:"Audi A6" },
@@ -120,46 +142,12 @@
                 </div>
                 <div view="resizer"></div>
                 <div view="tabview" ng-controller="addCtrl">
-                    <div header="Addition">
+                    <div header="Arithematics">
 
                         <div ui-view></div>
 
-
-                     
-
-
-
                     </div>
-                    <div header="Subtraction" ng-controller="subCtrl">
-                        <label>First Number</label>
-                        <input type="number" placeholder="Enter First Number here" ng-model="firstNum">
-                        <label>Second Number</label>
-                        <input type="number" placeholder="Enter Second Number here" ng-model="secondNum">
-                        <div>
-                            The Addition is : {{firstNum-secondNum}}
-                        </div>
 
-
-                    </div>
-                    <div header="Multiplication" ng-controller="multiCtrl">
-                        <label>First Number</label>
-                        <input type="number" placeholder="Enter First Number here" ng-model="firstNum">
-                        <label>Second Number</label>
-                        <input type="number" placeholder="Enter Second Number here" ng-model="secondNum">
-                        <div>
-                            The Multiplication is : {{firstNum*secondNum}}
-                        </div>
-                    </div>
-                    <div header="Division" ng-controller="divCtrl">
-                        <label>First Number</label>
-                        <input type="number" placeholder="Enter First Number here" ng-model="firstNum">
-                        <label>Second Number</label>
-                        <input type="number" placeholder="Enter Second Number here" ng-model="secondNum">
-                        <div>
-                            The Division is : {{firstNum/secondNum}}
-                        </div>
-
-                    </div>
                 </div>
             </div>
             <div view="resizer"></div>
