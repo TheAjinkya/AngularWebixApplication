@@ -1,12 +1,23 @@
-<div ng-contoller="addCtrl">
-<h1>Addition Panel </h1>
 
-<label>First Number</label>
-<input type="number" placeholder="Enter First Number here" ng-model="firstNum">
-<label>Second Number</label>
-<input type="number" placeholder="Enter Second Number here" ng-model="secondNum">
-<div>
-    The Addition is : {{firstNum+secondNum}}
+<div class="panel panle-primary">
+    <div class="panle-heading">
+    Addition 
+    
+    </div>
+    <div class="panle-body">
+        <div ng-contoller="addCtrl">
+            <h1>Addition Panel </h1>
+
+            <label>First Number</label>
+            <input type="number" placeholder="Enter First Number here" ng-model="firstNum">
+            <label>Second Number</label>
+            <input type="number" placeholder="Enter Second Number here" ng-model="secondNum">
+            <div>
+                The Addition is : {{firstNum+secondNum}}
+            </div>
+
+        </div>
+    </div>
+
 </div>
 
-</div>
