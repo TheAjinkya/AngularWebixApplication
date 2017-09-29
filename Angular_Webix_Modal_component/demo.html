@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en" ng-app="webixApp">
+    <head>
+        <meta charset="utf-8">
+        <title>Webix - Angular  : Layouts</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.webix.com/edge/webix.css">
+        <script type="text/javascript" src="https://cdn.webix.com/edge/webix.js"></script>
+        <script type="text/javascript" src="index.js"></script>
+
+        <script type="text/javascript">
+            var app = angular.module('webixApp', [ "webix" ]);
+
+            app.controller('webixController', function($scope){
+
+                var myWin = webix.ui({
+                    view: 'window',
+                    head: 'Please login',
+                    modal: true,
+                    position: 'center',
+                    body: {
+                        view: 'form',
+                        elements: [
+                            { view: 'text', label: 'Login', id: 'login' },
+                            { view: 'text', label: 'Email' },
+                            { view: 'button', value: 'Submit',
+                             click: function (elementId, event) {
+                                 this.getParentView().getParentView().close();
+                             }
+                            }
+                        ]
+                    },
+                    move: true
+                });
+                
+                
+
+
+                tree_data = [
+                    { id: "1", value: "Book 1", data: [
+                        { id: "1.1", value: "Part 1" },
+                        { id: "1.2", value: "Part 2" }
+                    ]},
+                    { id: "2", value: "Book 2", data: [
+                        { id: "2.1", value: "Part 1" }
+                    ]}
+                ];
+
+
+                $scope.myTree = {
+                    view:"tree",
+                    height : 500,
+                    id:"mytree",
+                    data : tree_data
+                };
+
+
+
+            })
+        </script>
+
+
+    </head>
+    <body>
+
+        <div webix-ui type="space">
+            <div height="35">Welcome to Angular Webix App </div>
+            <div view="cols" type="wide" margin="10">
+                <div width="200">
+                    <input type="text" placeholder="Type something here" ng-model="app">
+                    Hello {{app}}!
+                </div>
+                <div view="resizer"></div>
+
+                <div view="tabview" ng-controller="webixController">
+                    <div header="webix UI Components">
+                        <div webix-ui ="myTree" webix-data="tree_data"
+                             select="true"
+                             template="{common.icon()}{common.folder()}<a ui-sref='#link#' href='##link#'>#value#</a>"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
