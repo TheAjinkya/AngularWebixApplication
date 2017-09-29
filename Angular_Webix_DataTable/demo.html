@@ -12,7 +12,7 @@
         <script type="text/javascript">
             var app = angular.module('webixApp', [ "webix" ]);
 
-            
+
             app.controller('jsonCtrl', function($scope, $http){
 
                 $http.get('data.json').then(function(response){
@@ -20,7 +20,30 @@
                 })
             })
 
+            app.controller('extCtrl', function($scope, $http){
 
+                $http.get('data.json').then(function(response){
+                    $scope.content = response.data
+                })
+
+                $scope.myTable = {
+                    view:"datatable",
+                    columns:[
+                        { id:"name",	header:"Name", css:"rank",  width:150},
+                        { id:"username",header:"UserName",width:150, sort:"server"},
+                        { id:"email",	header:"Email ID" , width:200, sort:"server"}, 
+                        { id:"website",	header:"Website", 	width:150} 
+                    ],
+                    autoheight:true,
+                    autowidth:true,
+                    url:"https://jsonplaceholder.typicode.com/users",	
+                    ready:function(){
+                        this.markSorting("email", "desc")
+                        this.data.url = "https://jsonplaceholder.typicode.com/users"
+                    }  
+                }
+
+            })
         </script>
     </head>
     <body>
@@ -33,7 +56,7 @@
                     Hello {{app}}!
                 </div>
                 <div view="resizer"></div>
-                <div view="tabview" ng-controller="addCtrl">
+                <div view="tabview" ng-controller="jsonCtrl">
                     <div header="JSON Data Fetch Example">
 
                         <div ng-controller="jsonCtrl">
@@ -46,11 +69,13 @@
                         </div>
                     </div>
                 </div>
-                
+                <div view="resizer"></div>
+                <div view="tabview" ng-controller="extCtrl">
+                    <div header="External Source Data Table">
+                        <div webix-ui = "myTable"></div>
+                    </div>
+                </div>
             </div>
-
-
         </div>
-
     </body>
 </html>

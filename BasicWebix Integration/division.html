@@ -1,12 +1,19 @@
-
-<h1>The Division Panel</h1>
-<div header="Division" ng-controller="divCtrl">
-    <label>First Number</label>
-    <input type="number" placeholder="Enter First Number here" ng-model="firstNum">
-    <label>Second Number</label>
-    <input type="number" placeholder="Enter Second Number here" ng-model="secondNum">
-    <div>
-        The Division is : {{firstNum/secondNum}}
+<div class="panel panel-danger" ng-contoller="addCtrl">
+    <div class="panel-heading">
+        The Division Panel   
     </div>
+    <div class="panel-body">
 
+
+        <div header="Division" ng-controller="divCtrl">
+            <label>First Number</label>
+            <input type="number" placeholder="Enter First Number here" ng-model="firstNum">
+            <label>Second Number</label>
+            <input type="number" placeholder="Enter Second Number here" ng-model="secondNum">
+            <div>
+                The Division is : {{firstNum/secondNum}}
+            </div>
+
+        </div>
+    </div>
 </div>
