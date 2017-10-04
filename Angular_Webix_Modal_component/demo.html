@@ -26,15 +26,24 @@
                             { view: 'text', label: 'Email' },
                             { view: 'button', value: 'Submit',
                              click: function (elementId, event) {
-                                 this.getParentView().getParentView().close();
+                                 this.getTopParentView().hide();
                              }
                             }
                         ]
                     },
                     move: true
                 });
-                
-                
+
+                $scope.myModal = {
+                    view: 'button',
+                    value: 'Click to show modal window with inner form',
+                    click: function (elementId, event) {
+                        myWin.show();
+                        $$('login').focus();
+                    }
+                }
+
+
 
 
                 tree_data = [
@@ -78,6 +87,11 @@
                         <div webix-ui ="myTree" webix-data="tree_data"
                              select="true"
                              template="{common.icon()}{common.folder()}<a ui-sref='#link#' href='##link#'>#value#</a>"></div>
+
+                        <div webix-ui="myModal">
+
+
+                        </div>
                     </div>
                 </div>
             </div>
