@@ -77,7 +77,7 @@
 
                 var TreeData =   { data: [
                     {id:"root", value:"Super Micro Flow", open:true, link : "add", data:[
-                        { id:"1", open:true, value:"AP1",  link : "add", data:[
+                        { id:"1", open:true, value:"AP1",  link : "multi", data:[
                             { id:"1.1", value:"2G09#M10000761", link : "div", data:[
                                 { id:"1.11", value:"2G09#M10000761", link : "add", data:[
                                     { id:"1.11", value:"2G09#M10000761", link : "sub" },
@@ -97,14 +97,14 @@
                              { id:"2.3", value:"2G09#D10PP0761", link : "div" }
                          ]},
 
-                        { id:"3", open:false, value:"Division",  link : "div",
+                        { id:"3", open:false, value:"EP45",  link : "div",
                          data:[
                              { id:"3.1", value:"2G09#M10000761", link : "sub" },
                              { id:"3.2", value:"2G09#M10855757", link : "multi"},
                              { id:"3.3", value:"2G09#D10PP0761", link : "div" }
                          ]},
 
-                        { id:"4", open:false, value:"Subtraction",  link : "sub",
+                        { id:"4", open:false, value:"CR7767",  link : "sub",
                          data:[
                              { id:"4.1", value:"2G09#M10000761", link : "sub" },
                              { id:"4.2", value:"2G09#M10855757", link : "multi"},
@@ -124,7 +124,417 @@
                     template: "{common.icon()}{common.folder()}<a ui-sref='#link#' href='##link#'>#value#</a>"
                 }
 
-            })
+
+
+                $scope.advanceSearch={
+                    view: 'button',    
+                    value: 'Advance Search',
+                    click: function (elementId, event) {
+                        myWin.show();
+                        //$$("showwindow").show();
+                    }
+                } 
+
+                var myWin =webix.ui({
+                    view: 'window',
+                    resize:true,
+                    //fullscreen:true,
+                    id:"showwindow",
+                    //head: 'Advance Search',
+                    modal: false,
+                    position: 'center',
+                    height:600,
+                    width:1000,
+                    head:
+                    {
+                        cols:[
+                            {view:"label", label: "Advance Search"},
+                            {view:"button",type:"image",image:"index.png",align:"right",width:25,
+                             click:function()
+                             {            
+                                 $$('showwindow').adjust();
+
+                                 $$('showwindow').define("width", 50);
+                                 $$('showwindow').define("height", 50);
+                                 $$('showwindow').position="left";
+                                 $$('showwindow').resize();
+
+                                 // $$('showwindow').height=100;
+                                 //$$('showwindow').width=100;
+
+
+
+
+                             }
+                            }, {view:"button",type:"image",image:"cross.png",align:"right",width:50,click:("$$('showwindow').hide();")}
+
+
+
+                        ]
+
+                    },
+
+
+
+                    body: {
+                        view: 'form',
+
+                        elements: [
+                            {view: 'button', value: 'Search Criteria',align:'left',inputWidth:200,paddingTop:10},
+
+                            { view: 'combo',label: 'Template Name',id: 'tempName',labelWidth:120,
+                             value:"1",inputWidth:350, options:[ {id:1,value:"None"}]},
+
+                            { cols:[
+                                {
+                                    rows:[
+                                        {view:'text',label:'Project Name',labelWidth:120 },
+                                        {view:'text',label:'Test Name',labelWidth:120 },
+                                        {view:'text',label:'A-Requirement',labelWidth:120 },
+                                        {view:'text',label:'Duration',labelWidth:120 },
+                                        {view:'text',label:'Event',labelWidth:120 },
+                                        { cols:[
+                                            {view:"checkbox", labelRight:"Scheduled Start Date",labelWidth:0},
+
+                                            {view: "datepicker"},
+
+                                            {view: "datepicker"},
+
+
+                                        ]
+                                        },
+
+                                        { cols:[
+                                            {view:"checkbox", labelRight:"Plan Created Date",labelWidth:0},
+
+                                            {view: "datepicker"},
+
+                                            {view: "datepicker"},
+
+
+                                        ]
+                                        },
+
+
+
+
+                                    ]},
+
+                                { rows:[
+                                    {view:'text',label:'Test Plan Name',labelWidth:120 },
+                                    {view:'text',label:'Model Year',labelWidth:120 },
+                                    {view:'text',label:'UUT Type',labelWidth:120 },
+                                    {view:'text',label:'Between',labelWidth:120 },
+                                    {view:'text',label:'Test Planner',labelWidth:120 },
+                                    { cols:[
+                                        {view:"checkbox", labelRight:"Scheduled End Date",labelWidth:1},
+
+                                        {view: "datepicker"},
+
+                                        {view: "datepicker"},
+
+
+                                    ]
+                                    },
+
+                                ]},
+
+
+                            ]
+
+
+
+
+                            },
+
+
+                            { 
+                                container:'box',
+                                //height:500,
+                                //width:1000,       
+                                view:'scrollview',
+                                body:{
+                                    rows:
+                                    [{
+                                        cols:
+                                        [
+                                            { view: 'combo',label: 'Project',id: 'project',labelWidth:160,placeholder:"-Select Project-",width:450,inputHeight:30, options:[ {id:1,value:"2FN"},{id:2,value:"2MG"},{id:3,value:"2MJ"}]},
+                                            {rows:[
+                                                {view:"button", id:"my_buttonnext", value:"Button",  type:"next", inputWidth:10,align:'center'},
+                                                {view:"button", id:"my_buttonprev", value:"Button", type:"prev", inputWidth:10,align:'center'},
+
+                                            ]},
+                                            {view:"textarea",width:450}
+                                        ]},
+                                     {
+                                         cols:
+                                         [
+                                             { view: 'combo',label: 'Engine Platform',id: 'engineplatform',labelWidth:160,
+                                              placeholder:"-Select Engine Platform-",width:450,inputHeight:30, options:[ {id:1,value:"AP1"},{id:2,value:"AP2"},{id:3,value:"AP#"}]},
+                                             {rows:[
+                                                 {view:"button",value:"Button",  type:"next", inputWidth:10,align:'center'},
+                                                 {view:"button", value:"Button", type:"prev", inputWidth:10,align:'center'},
+
+                                             ]},
+                                             {view:"textarea",width:450}
+                                         ]},
+                                     {
+                                         cols:
+                                         [
+                                             { view: 'combo',label: 'Lot',id: 'lot',labelWidth:160,
+                                              placeholder:"-Select Lot-",width:450,inputHeight:30,options:[ {id:1,value:"0X1"},{id:2,value:"0X2"},{id:3,value:"60"}]},
+                                             {rows:[
+                                                 {view:"button",value:"Button",  type:"next", inputWidth:10,align:'center'},
+                                                 {view:"button", value:"Button", type:"prev", inputWidth:10,align:'center'},
+
+                                             ]},
+                                             {view:"textarea",width:450}
+                                         ]},
+                                     {
+                                         cols:
+                                         [
+                                             { view: 'combo',label: 'Engine Model Code',id: 'enginemodelcode',labelWidth:160,
+                                              placeholder:"-Select Engine Model Code-",width:450,inputHeight:30,options:[ {id:1,value:"(5BAA)"},{id:2,value:"(5MSA)"},{id:3,value:"(SYTF)"}]},
+                                             {rows:[
+                                                 {view:"button",value:"Button",  type:"next", inputWidth:10,align:'center'},
+                                                 {view:"button", value:"Button", type:"prev", inputWidth:10,align:'center'},
+
+                                             ]},
+                                             {view:"textarea",width:450}
+                                         ]},
+                                     {
+                                         cols:
+                                         [
+                                             { view: 'combo',label: 'Test Type',id: 'testtype',labelWidth:160,
+                                              placeholder:"-Select Test Type-",width:450,inputHeight:30,options:[ {id:1,value:"CIS Spec Test"},{id:2,value:"CIS_DirectInput_Test"},{id:3,value:"CIS_Overall performance_Spec test"}]},
+                                             {rows:[
+                                                 {view:"button",value:"Button",  type:"next", inputWidth:10,align:'center'},
+                                                 {view:"button", value:"Button", type:"prev", inputWidth:10,align:'center'},
+
+                                             ]},
+                                             {view:"textarea",width:450}
+                                         ]},
+                                     {
+                                         cols:
+                                         [
+                                             { view: 'combo',label: 'Facility Name',id: 'facilityname',labelWidth:160,
+                                              placeholder:"-Select Facility Name-",width:450,inputHeight:30,options:[ {id:1,value:"CIS(RS)_FacilityName#123"},{id:2,value:"CIS(RS)_FacilityName#123"},{id:3,value:"CIS(RS)_FacilityName#123"}]},
+                                             {rows:[
+                                                 {view:"button",value:"Button",  type:"next", inputWidth:10,align:'center'},
+                                                 {view:"button", value:"Button", type:"prev", inputWidth:10,align:'center'},
+
+                                             ]},
+                                             {view:"textarea",width:450}
+                                         ]},
+                                     {
+                                         cols:
+                                         [
+                                             { view: 'combo',label: 'UUT Type',id: 'uuttype',labelWidth:160,
+                                              placeholder:"-Select UUT Type-",width:450,inputHeight:30,options:[ {id:1,value:"DummyUUT"},{id:2,value:"Test Part"}]},
+                                             {rows:[
+                                                 {view:"button",value:"Button",  type:"next", inputWidth:10,align:'center'},
+                                                 {view:"button", value:"Button", type:"prev", inputWidth:10,align:'center'},
+
+                                             ]},
+                                             {view:"textarea",width:450}
+                                         ]},
+                                     {
+                                         cols:
+                                         [
+                                             { view: 'combo',label: 'Measurement Point',id: 'measurementpoint',labelWidth:160,
+                                              placeholder:"-Select Measurement Point-",width:450,inputHeight:30,options:[ {id:1,value:"#1PipeGAS"},{id:2,value:"#1PipeGASUP"},{id:3,value:"#2PipeGAS"}]},
+                                             {rows:[
+                                                 {view:"button",value:"Button",  type:"next", inputWidth:10,align:'center'},
+                                                 {view:"button", value:"Button", type:"prev", inputWidth:10,align:'center'},
+
+                                             ]},
+                                             {view:"textarea",width:450}
+                                         ]},
+                                     {
+                                         cols:
+                                         [
+                                             { view: 'combo',label: 'Event Name',id: 'eventname',labelWidth:160,
+                                              placeholder:"-Select Event-",width:450,inputHeight:30,options:[ {id:1,value:"Honda"},{id:2,value:"Unknown"},{id:3,value:"V1"}]}, 
+                                             {rows:[
+                                                 {view:"button",value:"Button",  type:"next", inputWidth:10,align:'center'},
+                                                 {view:"button", value:"Button", type:"prev", inputWidth:10,align:'center'},
+
+                                             ]},
+                                             {view:"textarea",width:450}
+                                         ]},
+                                     {
+                                         cols:
+                                         [
+                                             { view: 'combo',label: 'A-Requirement',id: 'arequirement',labelWidth:160,
+                                              placeholder:"-Select A-Requirement-",width:450,inputHeight:30,options:[ {id:1,value:"A026-1-1-1-1"},{id:2,value:"A026-1-1-1-2"},{id:3,value:"A026-1-1-1-3"}]}, 
+                                             {rows:[
+                                                 {view:"button",value:"Button",  type:"next", inputWidth:10,align:'center'},
+                                                 {view:"button", value:"Button", type:"prev", inputWidth:10,align:'center'},
+
+                                             ]},
+                                             {view:"textarea",width:450}
+                                         ]},
+
+                                     {
+                                         cols:
+                                         [
+                                             { view: 'combo',label: 'Engine Number',id: 'enginenumber',labelWidth:160,
+                                              placeholder:"-Select Engine Number -",width:450,inputHeight:30,options:[ {id:1,value:"S2EE-0001"},{id:2,value:"Unknown"}]},
+                                             {rows:[
+                                                 {view:"button",value:"Button",  type:"next", inputWidth:10,align:'center'},
+                                                 {view:"button", value:"Button", type:"prev", inputWidth:10,align:'center'},
+
+                                             ]},
+                                             {view:"textarea",width:450}
+                                         ]},
+                                     {
+                                         cols:
+                                         [
+                                             { view: 'combo',label: 'Data Name',id: 'dataname',labelWidth:160,
+                                              placeholder:"-Select Data Name-",width:450,inputHeight:30,options:[ {id:1,value:"Daily check"},{id:2,value:"Drive specifications"},{id:3,value:"Dummy"}]},
+                                             {rows:[
+                                                 {view:"button",value:"Button",  type:"next", inputWidth:10,align:'center'},
+                                                 {view:"button", value:"Button", type:"prev", inputWidth:10,align:'center'},
+
+                                             ]},
+                                             {view:"textarea",width:450}
+                                         ]},
+
+                                     {
+                                         cols:
+                                         [
+                                             { view: 'combo',label: 'Tag Number',id: 'tagnumber',labelWidth:160,
+                                              placeholder:"-Select Tag Number-",width:450,inputHeight:30,options:[ {id:1,value:"A026-1-1-1-1-118001"},{id:2,value:"A026-1-1-1-1-118002"},{id:3,value:"A026-1-1-1-1-118003"}]},
+                                             {rows:[
+                                                 {view:"button",value:"Button",  type:"next", inputWidth:10,align:'center'},
+                                                 {view:"button", value:"Button", type:"prev", inputWidth:10,align:'center'},
+
+                                             ]},
+                                             {view:"textarea",width:450}
+                                         ]},
+                                     {
+                                         cols:
+                                         [
+                                             { view: 'combo',label: 'Function Expert',id: 'functionexpert',labelWidth:160,
+                                              placeholder:"-Select Function Expert-",width:450,inputHeight:30,options:[ {id:1,value:"Kenji Yamanishi"},{id:2,value:"RJ007976"},{id:3,value:"RJ011788"}]},
+                                             {rows:[
+                                                 {view:"button",value:"Button",  type:"next", inputWidth:10,align:'center'},
+                                                 {view:"button", value:"Button", type:"prev", inputWidth:10,align:'center'},
+
+                                             ]},
+                                             {view:"textarea",width:450}
+                                         ]},
+                                     {
+                                         cols:
+                                         [
+                                             { view: 'combo',label: 'Test Status',id: 'teststatus',labelWidth:160,
+                                              placeholder:"-Select Test Status-",width:450,inputHeight:30,options:[ {id:1,value:"Draft"},{id:2,value:"Pending for Acceptance"},{id:3,value:"Pending for Conclusion"}]},
+
+                                             {rows:[
+                                                 {view:"button",value:"Button",  type:"next", inputWidth:10,align:'center'},
+                                                 {view:"button", value:"Button", type:"prev", inputWidth:10,align:'center'},
+
+                                             ]},
+                                             {view:"textarea",width:450}
+                                         ]},
+                                     {
+                                         cols:
+                                         [
+                                             { view: 'combo',label: 'Engineer Name',id: 'engineername',labelWidth:160,
+                                              placeholder:"-Select Engineer Name-",width:450,inputHeight:30,options:[ {id:1,value:"j0126399[Maiko Ishikawa]"},{id:2,value:"hpavan[Sainath Jadhav]"},{id:3,value:"jsainath[Sainath Jadhav]"}]}, 
+
+
+                                             {rows:[
+                                                 {view:"button",value:"Button",  type:"next", inputWidth:10,align:'center'},
+                                                 {view:"button", value:"Button", type:"prev", inputWidth:10,align:'center'},
+
+                                             ]},
+                                             {view:"textarea",width:450}
+                                         ]},
+                                     {
+                                         cols:
+                                         [
+                                             { view: 'combo',label: 'Operator',id: 'operator',labelWidth:160,
+                                              placeholder:"-Select Operator-",width:450,inputHeight:30,options:[ {id:1,value:"j0126399[Maiko Ishikawa]"},{id:2,value:"hpavan[Sainath Jadhav]"},{id:3,value:"jsainath[Sainath Jadhav]"}]},
+
+
+                                             {rows:[
+                                                 {view:"button",value:"Button",  type:"next", inputWidth:10,align:'center'},
+                                                 {view:"button", value:"Button", type:"prev", inputWidth:10,align:'center'},
+
+                                             ]},
+                                             {view:"textarea",width:450}
+                                         ]},
+                                     {
+                                         cols:
+                                         [
+                                             { view: 'combo',label: 'Owner',id: 'owner',labelWidth:160,
+                                              placeholder:"-Select Owner-",width:450,inputHeight:30,options:[ {id:1,value:"j0126399[Maiko Ishikawa]"},{id:2,value:"hpavan[Sainath Jadhav]"},{id:3,value:"jsainath[Sainath Jadhav]"}]},    
+
+
+
+                                             {rows:[
+                                                 {view:"button",value:"Button",  type:"next", inputWidth:10,align:'center'},
+                                                 {view:"button", value:"Button", type:"prev", inputWidth:10,align:'center'},
+
+                                             ]},
+                                             {view:"textarea",width:450}
+                                         ]},
+
+
+
+
+
+                                    ]
+
+                                }
+
+                            },
+
+
+
+
+
+                            { 
+                                paddingY:2,
+                                cols:[
+                                    {view: 'button', value: 'Search',align:'right',inputWidth:70},
+                                    {view: 'button', value: 'Cancel',align:'left',inputWidth:70,click:("$$('showwindow').hide();")}
+
+                                ]
+                            }
+
+                        ]
+
+                    },move: true
+                });
+
+
+
+                $scope.treeCombo={
+                    view:"combo", 
+                    id:"tree_Combodata", 
+                    label:"Tree",
+                    labelWidth:50,
+                    value:"1",
+                    width:200,
+                    options:[   
+                        {id:1, value:"Engine Platform"}, 
+                        {id:2, value:"Project Code"}
+                    ]
+                }
+
+
+                $scope.imagebuttons=
+                    {
+                    view:"toolbar", paddingY:1, height:40,width:250, 
+                    elements:[
+                        {view:"button",type:"icon",width:20}
+
+                    ]
+                }
+
+            }   )
 
         </script>
 
@@ -136,7 +546,14 @@
             <div view="resizer"></div>
             <div view="cols" type="wide" margin="10" >
                 <div width="250" height="500">
+
+                    <div webix-ui="advanceSearch">
+                    </div>
+                    <div webix-ui="treeCombo"></div>
+                    <div webix-ui="imagebuttons"></div>
+
                     <input type="text" placeholder="Search" ng-model="app">
+                      <input type="button" value="Go" style="width:50px;">
                     <div webix-ui="myTree" style="height: 500px; overflow-y: scroll"></div>
                 </div>
                 <div view="resizer"></div>

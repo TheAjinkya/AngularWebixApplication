@@ -12,12 +12,19 @@
         <script type="text/javascript">
             var app = angular.module('webixApp', [ "webix" ]);
 
-            
+
             app.controller('jsonCtrl', function($scope, $http){
 
                 $http.get('data.json').then(function(response){
                     $scope.content = response.data.student
                 })
+
+
+                $scope.myTree = {
+                    
+                    view:"tree",
+                    url:"https://docs.webix.com/samples/40_serverside/01_php_vanila/server/datatable.php"
+                };
             })
 
 
@@ -43,10 +50,15 @@
                                 <div view="column" id="contact"  sort="int">Contact</div>
                                 <div view="column" id="email"  sort="string" width= "200">E mail</div>  
                             </div>
+
+                            <div webix-ui="myTree">
+
+
+                            </div>
                         </div>
                     </div>
                 </div>
-                
+
             </div>
 
 
