@@ -76,30 +76,39 @@
             app.controller("TreeController", function($scope){
 
                 var TreeData =   { data: [
-                    {id:"root", value:"Arithmetics", open:true, link : "add", data:[
-                        { id:"1", open:true, value:"Addition",  link : "add", data:[
-                            { id:"1.1", value:"Avalon" },
-                            { id:"1.2", value:"Corolla" },
-                            { id:"1.3", value:"Camry" }
+                    {id:"root", value:"Super Micro Flow", open:true, link : "add", data:[
+                        { id:"1", open:true, value:"AP1",  link : "add", data:[
+                            { id:"1.1", value:"2G09#M10000761", link : "div", data:[
+                                { id:"1.11", value:"2G09#M10000761", link : "add", data:[
+                                    { id:"1.11", value:"2G09#M10000761", link : "sub" },
+                                    { id:"1.12", value:"2G09#M10855757", link : "multi"},
+                                    { id:"1.13", value:"2G09#D10PP0761", link : "div" }
+                                ]  },
+                                { id:"1.12", value:"2G09#M10855757", link : "multi"},
+                                { id:"1.13", value:"2G09#D10PP0761", link : "div" }
+                            ] },
+                            { id:"1.2", value:"2G09#M10855757", link : "multi"},
+                            { id:"1.3", value:"2G09#D10PP0761", link : "div" }
                         ]},
-                        { id:"2", open:true, value:"Multiplication",  link : "multi",
+                        { id:"2", open:false, value:"AP12",  link : "multi",
                          data:[
-                             { id:"2.1", value:"Octavia" },
-                             { id:"2.2", value:"Superb" }
+                             { id:"2.1", value:"2G09#M10000761", link : "sub" },
+                             { id:"2.2", value:"2G09#M10855757", link : "multi"},
+                             { id:"2.3", value:"2G09#D10PP0761", link : "div" }
                          ]},
 
-                        { id:"3", open:true, value:"Division",  link : "div",
+                        { id:"3", open:false, value:"Division",  link : "div",
                          data:[
-                             { id:"3.1", value:"Audi A4" },
-                             { id:"3.2", value:"Audi A6" },
-                             { id:"3.3", value:"Audi A7" }
+                             { id:"3.1", value:"2G09#M10000761", link : "sub" },
+                             { id:"3.2", value:"2G09#M10855757", link : "multi"},
+                             { id:"3.3", value:"2G09#D10PP0761", link : "div" }
                          ]},
 
-                        { id:"4", open:true, value:"Subtraction",  link : "sub",
+                        { id:"4", open:false, value:"Subtraction",  link : "sub",
                          data:[
-                             { id:"3.1", value:"Audi A4" },
-                             { id:"3.2", value:"Audi A6" },
-                             { id:"3.3", value:"Audi A7" }
+                             { id:"4.1", value:"2G09#M10000761", link : "sub" },
+                             { id:"4.2", value:"2G09#M10855757", link : "multi"},
+                             { id:"4.3", value:"2G09#D10PP0761", link : "div" }
                          ]}
                     ]}
                 ]
@@ -110,7 +119,8 @@
 
                     view:"tree", 
                     data : TreeData,
-                    height:600,  
+                    height:600,
+                    width: 300,        
                     template: "{common.icon()}{common.folder()}<a ui-sref='#link#' href='##link#'>#value#</a>"
                 }
 
@@ -122,19 +132,16 @@
     <body ng-controller="TreeController">
 
         <div webix-ui type="space">
-            <div height="35">Welcome to Angular Webix App </div>
+            <div height="35">Super Micro Flow Module </div>
             <div view="resizer"></div>
             <div view="cols" type="wide" margin="10" >
-                <div width="200" height="350">
-                    <input type="text" placeholder="Type something here" ng-model="app">
-                    Hello {{app}}!
-
-                    <div webix-ui="myTree" style="height: 300px; overflow-y: scroll"></div>
-
+                <div width="250" height="500">
+                    <input type="text" placeholder="Search" ng-model="app">
+                    <div webix-ui="myTree" style="height: 500px; overflow-y: scroll"></div>
                 </div>
                 <div view="resizer"></div>
-                <div view="tabview" ng-controller="addCtrl">
-                    <div header="Arithematics">
+                <div view="tabview" ng-controller="addCtrl" style="height: 400px; overflow-y: scroll">
+                    <div header="Super Micro Flow">
 
                         <div ui-view></div>
 
