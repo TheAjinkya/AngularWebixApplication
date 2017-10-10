@@ -7,20 +7,19 @@
         <link rel="stylesheet" type="text/css" href="https://cdn.webix.com/edge/webix.css">
     </head>
     <body>
-        
-       
+
+
 
         <div webix-ui type="space">
             <div height="35">Welcome to Angular Webix App </div>
             <div view="resizer"></div>
             <div view="cols" type="wide" margin="10">
-               
                 <div width="200" ng-controller="treeController">
                     <input type="text" placeholder="Type something here" ng-model="app">
                     Hello {{app}}!
-                    <div webix-ui='tree_config'></div>
+                    <div webix-ui="treeConfig"></div>
                     <div>
-                    {{content}}
+                        {{content}}
                     </div>
                 </div>
                 <div view="resizer"></div>
