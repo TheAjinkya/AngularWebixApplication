@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en" ng-app="webixApp">
+    <head>
+        <meta charset="utf-8">
+        <title>Webix - Angular  : Layouts</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.js"></script>
+        <script src="https://angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.webix.com/edge/webix.css">
+        <script type="text/javascript" src="https://cdn.webix.com/edge/webix.js"></script>
+        <script type="text/javascript" src="index.js"></script>
+
+        <script type="text/javascript">
+            var app = angular.module('webixApp', [ "webix", 'ui.router' ]);
+
+            app.config(function($stateProvider, $urlRouterProvider){
+
+                $urlRouterProvider.otherwise("/add");
+
+                $stateProvider
+                    .state('/add', {
+                    url : '/add',
+                    template : 'This is the Routed Addition File'
+                })
+
+                    .state('/sub', {
+                    url : '/sub',
+                    template : 'This is the Routed Subtraction File'
+                })
+
+                    .state('/div', {
+                    url : '/div',
+                    template : 'This is the Routed Division File'
+                })
+
+                    .state('/multi', {
+                    url : '/multi',
+                    template : 'This is the Routed Multiplication File'
+                })
+
+
+            })        
+
+
+            app.controller('jsonCtrl', function($scope){
+
+                var treeData =   { data: [
+                    {id:"root", value:"Super Micro Flow", open:true, link : "add", data:[
+                        { id:"1", open:true, value:"AP1",  link : "multi", data:[
+                            { id:"1.1", value:"2G09#M10000761", link : "div", data:[
+                                { id:"1.11", value:"2G09#M10000761", link : "add", data:[
+                                    { id:"1.11", value:"2G09#M10000761", link : "sub" },
+                                    { id:"1.12", value:"2G09#M10855757", link : "multi"},
+                                    { id:"1.13", value:"2G09#D10PP0761", link : "div" }
+                                ]  },
+                                { id:"1.12", value:"2G09#M10855757", link : "multi"},
+                                { id:"1.13", value:"2G09#D10PP0761", link : "div" }
+                            ] },
+                            { id:"1.2", value:"2G09#M10855757", link : "multi"},
+                            { id:"1.3", value:"2G09#D10PP0761", link : "div" }
+                        ]},
+                        { id:"2", open:false, value:"AP12",  link : "multi",
+                         data:[
+                             { id:"2.1", value:"2G09#M10000761", link : "sub" },
+                             { id:"2.2", value:"2G09#M10855757", link : "multi"},
+                             { id:"2.3", value:"2G09#D10PP0761", link : "div" }
+                         ]},
+
+                        { id:"3", open:false, value:"EP45",  link : "div",
+                         data:[
+                             { id:"3.1", value:"2G09#M10000761", link : "sub" },
+                             { id:"3.2", value:"2G09#M10855757", link : "multi"},
+                             { id:"3.3", value:"2G09#D10PP0761", link : "div" }
+                         ]},
+
+                        { id:"4", open:false, value:"CR7767",  link : "sub",
+                         data:[
+                             { id:"4.1", value:"2G09#M10000761", link : "sub" },
+                             { id:"4.2", value:"2G09#M10855757", link : "multi"},
+                             { id:"4.3", value:"2G09#D10PP0761", link : "div" }
+                         ]}
+                    ]}
+                ]
+                                 }
+
+
+                $scope.myTree = {
+
+                    view:"tree",
+                    data: treeData,
+                    template: "{common.icon()}{common.folder()}<a ui-sref='#link#' href='##link#'>#value#</a>",
+
+                }
+
+            })
+
+
+        </script>
+    </head>
+    <body ng-controller="jsonCtrl">
+
+        <div webix-ui type="space">
+            <div height="35">Welcome to Angular Webix App </div>
+            <div view="cols" type="wide" margin="10">
+                <div width="300">
+                    <input type="text" placeholder="Type something here" ng-model="app">
+                    Hello {{app}}!
+                    <div webix-ui="myTree"></div>
+
+                </div>
+                <div view="resizer"></div>
+                <div view="tabview" >
+                    <div header="Angular UI Routing Example">
+
+                        <div ng-controller="jsonCtrl">
+                           
+                            <div ui-view></div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </body>
+</html>
