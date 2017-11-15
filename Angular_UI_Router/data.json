@@ -1,5 +1,5 @@
-
-    
+{
+    "student" : [
 
         {
             "firstName" : "Ajinkya",
@@ -27,3 +27,5 @@
             "contact"   : 9960000703,
             "email"     : "gopal@hotmail.com"
         }
+    ]
+}

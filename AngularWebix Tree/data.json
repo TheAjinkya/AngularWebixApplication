@@ -1,66 +1,44 @@
-{
+[
 
-    "treeData": [
-        {
-            value : 'One',
-            webix_kids : false,
-            id : '1',
-            link :'about'
-
-        },
-        {
-            value : 'Two',
-            webix_kids : false,
-            id : '2',
-           
-            data:[
-                { id:"1.2.1", value:"Page 1" },
-                { id:"1.2.2", value:"Page 2" },
-                { id:"1.2.3", value:"Page 3" },
-                { id:"1.2.4", value:"Page 4" },
-                { id:"1.2.5", value:"Page 5" } ]
-        },
-        {
-            value : 'Two',
-            webix_kids : false,
-            id : '2',
-           
-            data:[
-                { id:"1.2.1", value:"Page 1" },
-                { id:"1.2.2", value:"Page 2" },
-                { id:"1.2.3", value:"Page 3" },
-                { id:"1.2.4", value:"Page 4" },
-                { id:"1.2.5", value:"Page 5" } ]
-        },
-        {
-            value : 'Two',
-            webix_kids : false,
-            id : '2',
-          
-            data:[
-                { id:"1.2.1", value:"Page 1" },
-                { id:"1.2.2", value:"Page 2" },
-                { id:"1.2.3", value:"Page 3" },
-                { id:"1.2.4", value:"Page 4" },
-                { id:"1.2.5", value:"Page 5" } ]
-        },
-        {
-            value : 'Two',
-            webix_kids : false,
-            id : '2',
-          
-            data:[
-                { id:"1.2.1", value:"Page 1" },
-                { id:"1.2.2", value:"Page 2" },
-                { id:"1.2.3", value:"Page 3" },
-                { id:"1.2.4", value:"Page 4" },
-                { id:"1.2.5", value:"Page 5" } ]
-        },
-        {
-            value : 'Three',
-            webix_kids : false,
-            id : '3'
-        
-        }
-    ]
-}
+    {
+        "value" : "One",
+        "webix_kids" : false,
+        "id" : "1",
+        "link" :"about",
+        "data":[
+            { "id":"1.2.1", "value":"Page 1", "link" : "product" },
+            { "id":"1.2.2", "value":"Page 1", "link" : "service" },
+            { "id":"1.2.3", "value":"Page 1", "link" : "about" },
+            { "id":"1.2.4", "value":"Page 1", "link" : "product" }
+        ]
+    },
+    
+    
+    {
+        "value" : "Two",
+        "webix_kids" : false,
+        "id" : "2",
+        "link" :"product",
+        "data":[
+            { "id":"2.2.1", "value":"Page 2", "link" : "about" },
+            { "id":"2.2.2", "value":"Page 2", "link" : "product" },
+            { "id":"2.2.3", "value":"Page 2", "link" : "service" },
+            { "id":"2.2.4", "value":"Page 2", "link" : "about" }
+        ]
+    },
+    
+    {
+        "value" : "Three",
+        "webix_kids" : false,
+        "id" : "3",
+        "link" :"service",
+        "data":[
+            { "id":"3.2.1", "value":"Page 3" },
+            { "id":"3.2.2", "value":"Page 3" },
+            { "id":"3.2.3", "value":"Page 3" },
+            { "id":"3.2.4", "value":"Page 3" }
+        ]
+    }
+    
+    
+]

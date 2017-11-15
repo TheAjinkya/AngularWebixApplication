@@ -10,11 +10,11 @@
 
 
 
-        <div webix-ui type="space">
+        <div webix-ui type="space" ng-controller="treeController">
             <div height="35">Welcome to Angular Webix App </div>
             <div view="resizer"></div>
-            <div view="cols" type="wide" margin="10">
-                <div width="200" ng-controller="treeController">
+            <div view="cols" type="wide" margin="10" style="overflow: scroll">
+                <div width="200">
                     <input type="text" placeholder="Type something here" ng-model="app">
                     Hello {{app}}!
                     <div webix-ui="treeConfig"></div>
@@ -25,7 +25,7 @@
                 <div view="resizer"></div>
                 <div view="tabview">
                     <div header="Tab1">
-                        <div ng-include="'navbar.html'"></div>
+<!--                        <div ng-include="'navbar.html'"></div>-->
                         <div ui-view></div>
                     </div>
                     <div header="Tab2">
@@ -34,8 +34,7 @@
                     <div header="Tab3"></div>
                 </div>
             </div>
-            <div view="resizer"></div>
-            <div header="footer"> footer</div>
+            
         </div>
     </body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

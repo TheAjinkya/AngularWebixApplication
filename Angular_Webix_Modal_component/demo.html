@@ -8,6 +8,8 @@
         <link rel="stylesheet" type="text/css" href="https://cdn.webix.com/edge/webix.css">
         <script type="text/javascript" src="https://cdn.webix.com/edge/webix.js"></script>
         <script type="text/javascript" src="index.js"></script>
+        <link rel="stylesheet" href="lobipanel.css">
+        <script type="text/javascript" src="lobipanel.js"></script>
 
         <script type="text/javascript">
             var app = angular.module('webixApp', [ "webix" ]);
@@ -72,29 +74,28 @@
 
     </head>
     <body>
-
-        <div webix-ui type="space">
-            <div height="35">Welcome to Angular Webix App </div>
-            <div view="cols" type="wide" margin="10">
-                <div width="200">
-                    <input type="text" placeholder="Type something here" ng-model="app">
-                    Hello {{app}}!
-                </div>
-                <div view="resizer"></div>
-
-                <div view="tabview" ng-controller="webixController">
-                    <div header="webix UI Components">
-                        <div webix-ui ="myTree" webix-data="tree_data"
-                             select="true"
-                             template="{common.icon()}{common.folder()}<a ui-sref='#link#' href='##link#'>#value#</a>"></div>
-
-                        <div webix-ui="myModal">
+        <div class="row">
 
 
-                        </div>
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        <h4>Panel title</h4>
                     </div>
                 </div>
+                <div class="panel-body">
+                    This is the body of the panel
+                </div>
             </div>
+            <script>
+                $('.lobipanel').lobiPanel('startLoading');
+                $('.lobipanel').lobiPanel("setPosition", 400, 360);
+                var position = $('.lobipanel').lobiPanel("getPosition");
+            </script>
+
+
+
         </div>
+
     </body>
 </html>

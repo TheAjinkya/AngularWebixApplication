@@ -3,16 +3,46 @@
     <head>
         <meta charset="utf-8">
         <title>Webix - Angular  : Layouts</title>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.js"></script>
+        <script src="https://angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
+
         <link rel="stylesheet" type="text/css" href="https://cdn.webix.com/edge/webix.css">
         <script type="text/javascript" src="https://cdn.webix.com/edge/webix.js"></script>
         <script type="text/javascript" src="index.js"></script>
 
         <script type="text/javascript">
-            var app = angular.module('webixApp', [ "webix" ]);
+            var app = angular.module('webixApp', [ "webix", 'ui.router' ]);
+
+            app.config(function($stateProvider, $urlRouterProvider){
+
+                $urlRouterProvider.otherwise("/add");
+
+                $stateProvider
+                    .state('/add', {
+                    url : '/add',
+                    template : 'This is the Routed Addition File'
+                })
+
+                    .state('/sub', {
+                    url : '/sub',
+                    template : 'This is the Routed Subtraction File'
+                })
+
+                    .state('/div', {
+                    url : '/div',
+                    template : 'This is the Routed Division File'
+                })
+
+                    .state('/multi', {
+                    url : '/multi',
+                    template : 'This is the Routed Multiplication File'
+                })
 
 
-            app.controller('jsonCtrl', function($scope, $http){
+            })        
+
+
+            app.controller('jsonCtrl', function($scope){
 
                 var treeData =   { data: [
                     {id:"root", value:"Super Micro Flow", open:true, link : "add", data:[
@@ -53,73 +83,16 @@
                 ]
                                  }
 
-                var tableData = {
-                    data : [
-
-                        {
-                            "firstName" : "Ajinkya",
-                            "lastName"  : "Chanshetty",
-                            "contact"   : 9960282703,
-                            "email"     : "aajinkya@hotmail.com"
-                        },
-                        {
-                            "firstName" : "Sandip",
-                            "lastName"  : "Pal",
-                            "contact"   : 9960282703,
-                            "email"     : "sandip@hotmail.com"
-                        },
-
-                        {
-                            "firstName" : "Neha",
-                            "lastName"  : "Sathawane",
-                            "contact"   : 99608882703,
-                            "email"     : "neha@hotmail.com"
-                        },
-
-                        {
-                            "firstName" : "Gopal",
-                            "lastName"  : "Thakur",
-                            "contact"   : 9960000703,
-                            "email"     : "gopal@hotmail.com"
-                        }
-                    ]
-                }
-
-
-                $http.get('data.json').then(function(response){
-                    $scope.content = response.data.student
-                })
-
 
                 $scope.myTree = {
 
                     view:"tree",
-                    data: treeData
+                    data: treeData,
+                    template: "{common.icon()}{common.folder()}<a ui-sref='#link#' href='##link#'>#value#</a>",
 
                 }
 
-                $scope.myTable = {
-
-                    view : 'datatable',
-                    id:'newTable',
-                    autoconfig: true,
-
-                    columns:[
-                        { id:"firstName",	header:"Name", css:"rank",  width:150},
-                        { id:"lastName",header:"UserName",width:150, sort:"server"},
-                        { id:"contact",	header:"Email ID" , width:200, sort:"server"}, 
-                        { id:"email",	header:"Website", 	width:150} 
-                    ],
-                    autoheight:true,
-                    autowidth:true,
-
-                    ready:function(){
-                        this.markSorting("email", "desc")
-                        this.data = "data.json"
-                    }
-                }
-
-                })
+            })
 
 
         </script>
@@ -132,24 +105,20 @@
                 <div width="300">
                     <input type="text" placeholder="Type something here" ng-model="app">
                     Hello {{app}}!
-                    <div webix-ui="myTree" ></div>
+                    <div webix-ui="myTree"></div>
 
                 </div>
                 <div view="resizer"></div>
                 <div view="tabview" >
-                    <div header="JSON Data Fetch Example">
+                    <div header="Angular UI Routing Example">
 
                         <div ng-controller="jsonCtrl">
-                            <!--<div webix-ui view="datatable" webix-data="content" autoheight="true"  select="row" fillspace="true">
-<div autowidth="true" view="column" id="firstName" sort="int" css="rating" scrollY="true">First Name</div>
-<div view="column" id="lastName"   sort="int">Last Name</div>
-<div view="column" id="contact"  sort="int">Contact</div>
-<div view="column" id="email"  sort="int">Email</div>
-</div>-->
-
-                            <div webix-ui='myTable'></div>  
+                           
+                            <div ui-view></div>
 
                         </div>
+
+
                     </div>
                 </div>
 

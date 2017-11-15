@@ -5,19 +5,19 @@ app.config(function($stateProvider, $urlRouterProvider){
     $stateProvider
         .state('/', {
         url : '/',
-        template : 'home.html'
+        template : 'Redirected to home.html'
     })
         .state('about', {
         url : '/about',
-        template : 'about.html'
+        template : 'Redirected to about.html'
     })
         .state('product', {
         url : '/product',
-        template : 'product.html'
+        template : 'Redirected to product.html'
     })
         .state('service', {
         url : '/service',
-        template : 'service.html'
+        template : 'Redirected to service.html'
     })
 })
 
